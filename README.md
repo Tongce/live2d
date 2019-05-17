@@ -2,7 +2,7 @@
 live2dDemo-master
 # Live2dDemo
 
-预览地址： http://summerscar.me/live2dDemo/ 模型加载速度有点慢
+预览地址：https://tongce.github.io/live2d/模型加载速度有点慢
 
 或者 git clone 进目录http-server
 
