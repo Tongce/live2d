@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Live2d Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div id="app">
+      width: <input type="text" id="twidth" value="300"><br>
+      height: <input type="text" id="theight" value="400"><br>
+      <!-- modelName: <input type="text" id="tmodelName" value="hijiki"><br> -->
+      modelName:
+      <select id="tmodelName" onchange='myfunc()'>
+        <option value="izumi">izumi</option>
+        <option value="hijiki">hijiki</option>
+        <option value="chitose">chitose</option>
+        <option value="Epsilon2.1">Epsilon2.1</option>
+         <option value="haru01">haru01</option>
+        <option value="haru02">haru02</option>
+        <option value="Gantzert_Felixander">Gantzert_Felixander</option>
+        <option value="haruto">haruto</option>
+        <option value="hibiki">hibiki</option>
+        <option value="histoire">histoire</option>
+        <option value="iio">iio</option>
+        <option value="kesyoban">kesyoban</option>
+        <option value="koharu">koharu</option>
+        <option value="makoto0">makoto0</option>
+        <option value="miku">miku</option>
+        <option value="Bronya">Bronya</option>
+        <option value="nepmaid">nepmaid</option>
+        <option value="ni-j">ni-j</option>
+        <option value="penchan">penchan</option>
+        <option value="PLT">PLT</option>
+        <option value="poi">poi</option>
+        <option value="shizuku">shizuku</option>
+        <option value="tia">tia</option>
+        <option value="tororo">tororo</option>
+        <option value="tsumiki">tsumiki</option>
+        <option value="Unitychan">Unitychan</option>
+        <option value="wanko">wanko</option>
+        <option value="yukari_model">yukari_model</option>
+        <option value="YuzukiYukari">YuzukiYukari</option>
+        <option value="z16">z16</option>
+      </select><br>
+      headPos: <input type="text" id="theadPos" value="0.5"><br>
+      scaling: <input type="text" id="tscaling" value="2"><br>
+      opacityDefault: <input type="text" id="topacityDefault" value="0.7"><br>
+      opacityHover: <input type="text" id="topacityHover" value="1"><br>
+      <input type="button" value="GO!" onclick="javascript:myfunc()">
+      <div>
+        <canvas id="live2dcanvas" width="300" height="400" style="border:dashed 1px #CCC"></canvas>
+      </div>
+    </div>
+    <style>
+      #live2dcanvas{
+        width: 300;
+        height: 400;
+      }
+
+    </style>
+  <script type="text/javascript" src="device.min.js"></script>
+
+  <script language="JAVASCRIPT">
+  function myfunc (){
+    var width = document.getElementById("twidth").value;
+    var height = document.getElementById("theight").value;
+    // var modelName = document.getElementById("tmodelName").value;
+    var mySelect = document.getElementById("tmodelName");
+    var mySelectIndex = mySelect.selectedIndex;
+    var modelName = mySelect.options[mySelectIndex].value;
+
+    var headPos = document.getElementById("theadPos").value;
+    var scaling = document.getElementById("tscaling").value;
+    var opacityDefault = document.getElementById("topacityDefault").value;
+    var opacityHover = document.getElementById("topacityHover").value;
+    var modelUrl="./assets/name/name.model.json";
+    document.getElementById("live2dcanvas").style.width = width + 'px';
+    document.getElementById("live2dcanvas").style.height = height + 'px';
+    modelUrl = modelUrl.replace(/name/g, modelName);
+    console.log(modelUrl);
+    // 传入id, 模型path, 重心， 缩放， 默认透明， hover透明度
+    loadlive2d("live2dcanvas", modelUrl);
+  }
+  setTimeout(function(){
+    myfunc ();
+  },600)
+  </script>
+  <script type="text/javascript" src="bundle.js"></script></body>
+  </html>
